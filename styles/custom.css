@@ -1,0 +1,257 @@
+body, h1, h2, h3, p, table, td, ul {
+  margin: 0px;
+  padding: 0px;
+  font-family: Officina, Calibri, Arial;
+  font-size: 13px;
+  line-height: 1.5em;
+  color: #000;
+}
+
+#content {
+  margin: 0px;
+  padding: 0px;
+  width: 595px;
+  text-align: left;
+}
+
+#container {
+  margin: 0px 0px 15px 0px;
+  padding: 0px;
+}
+
+#header h1 {
+  margin: 7px 0px 0px 20px;
+  padding: 0px;
+  font-family: Officina_bold, Calibri, Arial;
+  font-size: 17px;
+  font-weight: normal;
+  color: #000;
+}
+
+h2 {
+  margin: 0px 0px 0px 20px;
+  font-family: Officina, Calibri, Arial;
+  font-weight: normal;
+}
+
+p {
+  margin: 0px 0px 15px 0px;
+  color: #4a4a4a;
+  font-weight: normal;
+  font-family: Arial,sans-serif;
+}
+
+#header {
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid #E11B17;
+  border-width: 2px 0px 0px 0px;
+}
+
+#block {
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  height: 25px;
+  width: 10px;
+  background: #E11B17;
+}
+
+#chart {
+  margin: 0px;
+  padding: 0px 0px 0px 20px;
+}
+
+#source, #note {
+  margin: 0px 0px 0px 20px;
+  padding: 0px;
+  font-family: Officina, Calibri, Arial;
+  font-size: 13px;
+  color: #000;
+}
+
+#source {
+  margin: 0px 0px 0px 20px;
+  padding: 0px;
+}
+
+#note {
+  display: inline;
+  text-align: right;
+  float: right;
+  margin: 0px;
+}
+
+g.y.axis path.domain {
+  stroke-width: 0px;
+}
+
+g.x.axis path.domain, g.x.axis g.tick.major line, g.x.axis g.tick line {
+  stroke: #333;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.axis path, .axis line {
+  fill: none;
+  shape-rendering: crispEdges;
+}
+
+.axis line {
+  stroke: #eee;
+  stroke-width: 1px;
+}
+
+g.group text, g.tick text, .x.axis text {
+  font-family: Officina, Calibri, Arial;
+  font-size: 13px;
+}
+
+#indicators, #years {
+  margin: 5px 5px 0px 20px;
+  padding: 0px;
+}
+
+.button {
+  display: inline-block;
+  margin: 0px;
+  padding: 2px 5px;
+  line-height: 20px;
+  text-align: center;
+  font-family: Officina, Calibri, Arial;
+  font-size: 14px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #E30010;
+  margin-right: -4px;
+}
+
+.separate {
+  margin: 0px -4px 0px 40px;
+}
+
+
+#years .selected {
+  background: #ff0000;
+  color: #fff;
+}
+
+#years {
+  margin: 10px 5px 0px 0px;
+  padding: 0px;
+  float: right;
+}
+
+.button:hover {
+  background:#ff0000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.bar1 {
+  fill: #00ACDD;
+}
+
+.bar2 {
+  fill: #003D58;
+}
+
+.bar3 {
+  fill: #0078B2;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.country text {
+  font-weight: bold;
+}
+
+g.x.axis g.tick line {
+  stroke: #ddd;
+}
+
+.y.axis .tick text:hover {
+  cursor: pointer;
+}
+
+.y.axis .tick text.selected {
+  font-weight: bold;
+  fill: #e11b17;
+}
+
+#bullets {
+margin: 5px 0px 0px 0px;
+padding: 0;
+width: 593px;
+border: 1px solid #ccc;
+}
+
+#bullets ul{
+  padding: 5px;
+  list-style-type: circle;
+  font-size: 14px;
+  line-height: 1.7em;
+}
+
+#but1 {
+  background: #ff0000;
+  color: #fff;
+}
+
+#but2 {
+  background: #003D58;
+  color: #fff;
+  border: 1px solid #003D58;
+}
+
+#but3 {
+  background: #00ACDD;
+  color: #fff;
+  border: 1px solid #00ACDD;
+}
+
+#but4 {
+  background: #0078B2;
+  color: #fff;
+border: 1px solid #0078B2;
+}
+
+#but5 {
+  background: #d95f0e;
+  color: #fff;
+  border: 1px solid #d95f0e;
+}
+
+
+sup {
+  vertical-align: super;
+  font-size: 10px;
+  line-height: 1.3em;
+}
+
+div.tooltip {
+  position: absolute;
+  pointer-events: none;
+  margin: 0px;
+  padding: 7px;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+div.tooltip p, div.tooltip h2 {
+  margin: 0px;
+  padding: 0px;
+  font-size: 13px;
+  line-height: 1.2rem;
+  color: #000;
+  text-align: left;
+  font-family: Officina, Calibri, Arial;
+  font-size: 13px;
+}
+
+div.tooltip h2 {
+  margin: 0px;
+  padding: 0px 0px 5px 0px;
+}
