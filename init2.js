@@ -48,36 +48,20 @@ d3.csv("data/dataWed2.csv", function(error, data) {
 
   data.forEach(function(d) {
 
-
     d.total_2014 = +d.total_2014;
     d.crony_2014 = +d.crony_2014;
-    d.stack2_2014 = +d.clean_2014;
-    d.stack3_2014 = +d.clean_2014;
-
-    d.but2_2014 = +d.crony_2014;
-    d.but3_2014 = +d.clean_2014;
-
-    // d.but5_2014 = +d.wealth;
+    d.clean_2014 = +d.clean_2014;
 
     d.total_2016 = +d.total_2016;
     d.crony_2016 = +d.crony_2016;
-    d.stack2_2016 = +d.clean_2016;
-    d.stack3_2016 = +d.clean_2014;
-
     d.clean_2016 = +d.clean_2016;
-    d.but2_2016 = +d.crony_2016;
-    d.but3_2016 = +d.clean_2016;
-    //d.but4_2016 = +d.clean_2016;
-    d.but5_2016 = +d.wealth;
+
+
 
   });
 
   y.domain(data.map(function(d) { return d.country; }));
   x.domain([0, 30]).nice();
-
-  // y0 = y.domain(data.sort(function(a, b) {return eval("b." + selectedVariable) - eval("a." + selectedVariable);})
-  //       .map(function(d) { return d.country; }));
-
 
   svg.append("g")
     .attr("class", "x axis")
@@ -91,44 +75,9 @@ d3.csv("data/dataWed2.csv", function(error, data) {
   var countries = svg.selectAll(".bar")
     .data(data);
 
-
-  var sortbutton = svg.append("g")
-                            .attr("transform", "translate(400, 20)")
-                            .style("cursor", "pointer")
-                            .on("click", function() {
-                              d3.select(".sortbuttonrect").attr("fill", "red")
-                              d3.select(".sortbuttontext").attr("fill", "#fff")
-
-                              d3.selectAll(".bar")
-                                  // .sort(function(a, b) { return y0(a.country) - y0(b.country); });
-
-
-                            })
-                            .on("mouseleave", function() {
-                              d3.select(".sortbuttonrect").attr("fill", "#fff")
-                              d3.select(".sortbuttontext").attr("fill", "red")
-                            });
-
-  sortbutton.append("rect").classed("sortbuttonrect", true)
-                      .attr("width", 68)
-                      .attr("height", 30)
-                      .attr("fill", "#fff")
-                      .attr("stroke", 'red')
-                      .attr("pointer-event", "none")
-
-
-  sortbutton.append("text").classed("sortbuttontext", true)
-                      .text("Sort bars")
-                      .attr("x", 7)
-                      .attr("y", 19)
-                      .attr("font-size", 15)
-                      .attr("fill", "red")
-                      .attr("pointer-event", "none")
-
-
-
-  countries
+countries
     .enter().append("rect")
+    .classed("crony", true)
     .attr("class", function(d) { return "bar bar1 " + d.country; })
     .attr("y", function(d) { return y(d.country); })
     .attr("height", y.rangeBand())
@@ -140,6 +89,7 @@ d3.csv("data/dataWed2.csv", function(error, data) {
 
   countries
     .enter().append("rect")
+    .classed("clean", true)
     .attr("class", function(d) { return "bar bar2 " + d.country; })
     .attr("y", function(d) { return y(d.country); })
     .attr("height", y.rangeBand())
@@ -165,10 +115,7 @@ d3.csv("data/dataWed2.csv", function(error, data) {
     .attr("id", function(d) {return d.country.split(' ').join('_');});
 
   d3.selectAll("#indicators .button").on("click", changeIndicator);
-
-
-  d3.selectAll("#years .button").on("click", changeYear);  // change year when click
-
+  d3.selectAll("#years .button").on("click", changeYear);
 
 
 
@@ -215,7 +162,6 @@ d3.csv("data/dataWed2.csv", function(error, data) {
 
           d3.select(this)
             .classed("selected",true);
-
           updateChart();
   }
 
@@ -224,30 +170,25 @@ d3.csv("data/dataWed2.csv", function(error, data) {
   function updateChart() {
 
           selectedIndicator = d3.select("#indicators .selected").property("id");
-          // "but1" // "but2" // "but3"
           selectedYear = d3.select("#years .selected").property("id");
-            // "2014" // "2016"
           selectedVariable = selectedIndicator + "_" + selectedYear
 
 
           if (selectedIndicator=="but1") {
-              // console.log("button1")
+              console.log("button1")
 
               d3.selectAll(".bar1 ")
               .attr("y", function(d) { return y(d.country); })
               .attr("height", y.rangeBand())
               .attr("x", function(d) {return 1;})
-              .attr("width", function(d) {return Math.abs(x(eval("d.total_" + selectedYear)) - x(0)); - 1 })
-              .style("fill","#00ACDD")
-              // .on("mouseover", function (d) {
-              //   console.log(eval("d.total_" + selectedYear))
-              // });
+              .attr("width", function(d) {return Math.abs(x(d.total_2016) - x(0)); - 1 })
+              .style("fill","#00ACDD");
 
-              d3.selectAll(".bar2 ")
+                d3.selectAll(".bar2 ")
                 .attr("y", function(d) { return y(d.country); })
                 .attr("height", y.rangeBand())
                 .attr("x", function(d) {return 1;})
-                .attr("width", function(d) {return Math.abs(x(eval("d.total_" + selectedYear)) - x(eval("d.but3_" + selectedYear))); - 1})
+                .attr("width", function(d) {return Math.abs(x(d.total_2016) - x(d.but3_2016)); - 1})
                 .style("fill","#003D58");
           }
           else if (selectedIndicator=="but2") {
@@ -343,7 +284,7 @@ d3.csv("data/dataWed2.csv", function(error, data) {
     d3.selectAll(".bar2")
       .transition()
       .duration(0)
-      .attr("x", function(d) {return Math.abs(x(eval("d.but2_" + selectedYear))); })
+      .attr("x", function(d) {return Math.abs(x(eval("d.total_" + selectedYear)) - x(eval("d.stack2_" + selectedYear)));})
       .style("fill","#00ACDD")
       .attr("width", function(d) {return Math.abs(x(eval("d.but3_" + selectedYear))); });
 
@@ -392,7 +333,7 @@ d3.csv("data/dataWed2.csv", function(error, data) {
           .attr("width", function(d) { return Math.abs(x(eval("d." + selectedVariable)) - x(0)) - 1;});
 
         transition = svg.transition()
-                        .duration(0),
+                        .duration(0)
 
           delay = 0;
 
